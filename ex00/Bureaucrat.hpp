@@ -1,6 +1,7 @@
 #ifndef BUREAUCRAT_HPP_
 #define BUREAUCRAT_HPP_
 
+#include <exception>
 #include <string>
 #include <iostream>
 
@@ -19,6 +20,15 @@ class Bureacrat
 	int			getGrade() const;
 	void	increment();
 	void	decrement();
+
+	class	GradeTooHighException: public std::exception
+	{
+
+	};
+	class	GradeTooLowException: public std::exception
+	{
+
+	};
 
 };
 
