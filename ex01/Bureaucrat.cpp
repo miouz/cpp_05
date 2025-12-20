@@ -61,6 +61,18 @@ void	Bureacrat::degrade()
 		grade_++;
 }
 
+void	Bureacrat::signForm(Form& toSign) const
+{
+	try {
+		toSign.beSigned(*this);
+		std::cout << name_ << " signed " << toSign.getName() << std::endl;
+	} catch(std::exception& e)
+	{
+		std::cout << name_ << " coudn't sign " << toSign.getName()
+			<< " because " << e.what();
+	}
+}
+
 Bureacrat::GradeTooHighException::GradeTooHighException(const std::string& name):
 msg_name_(name)
 {

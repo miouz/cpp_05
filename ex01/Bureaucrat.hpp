@@ -4,6 +4,7 @@
 #include <exception>
 #include <string>
 #include <iostream>
+#include "Form.hpp"
 
 class Bureacrat
 {
@@ -21,6 +22,7 @@ class Bureacrat
 	int	getGrade() const;
 	void	upgrade();
 	void	degrade();
+	void	signForm(Form& toSign) const;
 
 	class	GradeTooHighException: public std::exception
 	{

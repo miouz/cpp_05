@@ -20,31 +20,21 @@ class Form
 	Form& operator=(const Form& other);
 
 	const std::string getName() const;
-	const int	getGradeToSign() const;
-	const int	getGradeToExec() const;
+	int	getGradeToSign() const;
+	int	getGradeToExec() const;
 	bool			getIsSigned() const;
 
 	void	beSigned(const Bureacrat& one);
 	
 	class	gradeTooHighException: public std::exception
 	{
-		const std::string msg_name_;
-		std::string	msg_;
-
 		public:
-		gradeTooHighException(const std::string& name);
-		~gradeTooHighException();
 		const char*	what() const throw();
 	};
 
 	class gradeTooLowException: public std::exception
 	{
-		const std::string msg_name_;
-		std::string	msg_;
-
 		public:
-		gradeTooLowException(const std::string& name);
-		~gradeTooLowException();
 		const char*	what() const throw();
 	};
 };

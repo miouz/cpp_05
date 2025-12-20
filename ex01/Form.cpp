@@ -5,12 +5,12 @@ Form::Form():
 formName_(""), isSigned_(false), gradeToSign_(150), gradeToExec_(150){}
 
 Form::Form(const std::string& name, const int gradeToSign, const int gradeToExec):
-formName_(name), isSigned_(false), gradeToExec_(gradeToExec), gradeToSign_(gradeToSign)
+formName_(name), isSigned_(false), gradeToSign_(gradeToSign), gradeToExec_(gradeToExec)
 {
 	if (gradeToSign > 150 || gradeToExec > 150)
-		throw gradeTooLowException(name);
+		throw gradeTooLowException();
 	if (gradeToSign < 1 || gradeToExec < 1)
-		throw gradeTooHighException(name);
+		throw gradeTooHighException();
 }
 
 Form::~Form(){}
@@ -31,12 +31,12 @@ const std::string Form::getName() const
 	return formName_;
 }
 
-const int	Form::getGradeToSign() const
+int	Form::getGradeToSign() const
 {
 	return gradeToSign_;
 }
 
-const int	Form::getGradeToExec() const
+int	Form::getGradeToExec() const
 {
 	return gradeToExec_;
 }
@@ -51,13 +51,22 @@ void	Form::beSigned(const Bureacrat& one)
 	if (one.getGrade() <= gradeToSign_)
 		isSigned_ = true;
 	else
-		throw gradeTooLowException(formName_);
+		throw gradeTooLowException();
 }
 
-Form::gradeTooHighException::gradeTooHighException(const std::string &name):
-msg_name_(formName_)
+const char* Form::gradeTooLowException::what() const throw()
 {
-	stringstream	output;
+	return ("grade TOOOOOOOOOO LOWWWWWWW\n");
+}
 
-	output<< msg_name_<<" " 
+const char* Form::gradeTooHighException::what() const throw()
+{
+	return ("grade TOOOOOOOOOO HIIIIIGGGHHHHH\n");
+}
+
+std::ostream& operator<<(std::ostream& out, const Form& one)
+{
+	out <<std::boolalpha << "File " << one.getName() <<", grade to sign " << one.getGradeToSign()
+		<< ", grade to exec " << one.getGradeToExec() <<". Form is signed = " << one.getIsSigned() << std::endl;
+	return out;
 }
