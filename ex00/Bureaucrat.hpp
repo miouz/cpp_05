@@ -12,22 +12,26 @@ class Bureacrat
 
 	public:
 	Bureacrat();
+	Bureacrat(int grade, const std::string& name);
 	~Bureacrat();
 	Bureacrat(const Bureacrat& other);
 	Bureacrat& operator=(const Bureacrat& other);
 
-	std::string getName() const;
-	int			getGrade() const;
-	void	increment();
-	void	decrement();
+	const std::string getName() const;
+	int	getGrade() const;
+	void	upgrade();
+	void	degrade();
 
 	class	GradeTooHighException: public std::exception
 	{
-
+		public:
+		const char* what() const throw ();
 	};
+
 	class	GradeTooLowException: public std::exception
 	{
-
+		public:
+		const char* what() const throw();
 	};
 
 };
