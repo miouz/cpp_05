@@ -24,13 +24,23 @@ class Bureacrat
 
 	class	GradeTooHighException: public std::exception
 	{
+		const ::std::string	msg_name_;
+		std::string	msg_;
+
 		public:
+		GradeTooHighException(const std::string& name);
+		~GradeTooHighException() throw();
 		const char* what() const throw ();
 	};
 
 	class	GradeTooLowException: public std::exception
 	{
+		const ::std::string	msg_name_;
+		std::string msg_;
+
 		public:
+		GradeTooLowException(const std::string& name);
+		~GradeTooLowException() throw();
 		const char* what() const throw();
 	};
 

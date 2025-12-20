@@ -9,7 +9,7 @@ int main()
 	std::cout << cafNpc1;
 	}
 	catch(std::exception& e) {
-		std::cout << "Error:" << e.what();
+		std::cout << "Error: " << e.what();
 	}
 
 	//test for upgrade and degrade exeption
@@ -21,7 +21,7 @@ int main()
 	std::cout << cafNpc2;
 	}
 	catch (std::exception& e) {
-		std::cout << "Error:" << e.what();
+		std::cout << "Error: " << e.what();
 	}
 	try {
 	Bureacrat cafNpc3(1, "Jean-Charles");
@@ -31,7 +31,7 @@ int main()
 	std::cout << cafNpc3;
 	}
 	catch (std::exception& e) {
-		std::cout << "Error:" << e.what();
+		std::cout << "Error: " << e.what();
 	}
 	return (0);
 }

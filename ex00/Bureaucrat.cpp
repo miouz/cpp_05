@@ -1,4 +1,5 @@
 #include "Bureaucrat.hpp"
+#include <sstream>
 
 Bureacrat::Bureacrat():
 name_(""), grade_(150){}
@@ -7,18 +8,18 @@ name_(""), grade_(150){}
 Bureacrat::Bureacrat(int grade, const std::string& name):
 name_(name)
 {
-	std::cout << "Bureacrat constructor called\n";
+	std::cout << name_<< " Bureacrat constructor called\n";
 	if (grade < 1)
-		throw GradeTooHighException();
+		throw GradeTooHighException(name_);
 	else if (grade > 150)
-		throw GradeTooLowException();
+		throw GradeTooLowException(name_);
 	else
 		grade_ = grade;
 }
 
 Bureacrat::~Bureacrat()
 {
-	std::cout << "Bureacrat destructor called\n";
+	std::cout << name_ << " Bureacrat destructor called\n";
 }
 
 Bureacrat::Bureacrat(const Bureacrat& other):
@@ -47,7 +48,7 @@ int	Bureacrat::getGrade() const
 void	Bureacrat::upgrade()
 {
 	if (this->grade_ - 1 < 1 )
-		throw GradeTooHighException();
+		throw GradeTooHighException(name_);
 	else
 		grade_--;
 }
@@ -55,23 +56,44 @@ void	Bureacrat::upgrade()
 void	Bureacrat::degrade()
 {
 	if (this->grade_ + 1 > 150 )
-		throw GradeTooLowException();
+		throw GradeTooLowException(name_);
 	else
 		grade_++;
 }
 
+Bureacrat::GradeTooHighException::GradeTooHighException(const std::string& name):
+msg_name_(name)
+{
+	std::stringstream output;
+
+	output << msg_name_ << " grade TOOOOOOOOOOOO HIIIGGGHHHHHHH\n";
+	msg_ = output.str();
+
+}
 const char* Bureacrat::GradeTooHighException::what() const throw()
 {
-	return "grade TOOOOOOOOOOOO HIIIGGGHHHHHHH\n";
+	return msg_.c_str();
 }
 
+Bureacrat::GradeTooHighException::~GradeTooHighException() throw() {}
+
+Bureacrat::GradeTooLowException::GradeTooLowException(const std::string& name):
+msg_name_(name)
+{
+	std::stringstream output;
+
+	output << msg_name_ << " grade TOOOOOOOOOOOO LOOOOOOOOOOOWWW\n";
+	msg_ = output.str();
+}
+
+Bureacrat::GradeTooLowException::~GradeTooLowException() throw() {}
 const char* Bureacrat::GradeTooLowException::what() const throw()
 {
-	return "grade TOOOOOOOOOOOO LOOOOOOOOOWWWW\n";
+	return msg_.c_str();
 }
 
 std::ostream& operator<<(std::ostream& out, const Bureacrat& one)
 {
-	out << one.getName() << ",bureaucrat grade " << one.getGrade() << std::endl;
+	out << one.getName() << ", bureaucrat grade " << one.getGrade() << "."<< std::endl;
 	return out;
 }
