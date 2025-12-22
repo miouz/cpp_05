@@ -11,9 +11,22 @@ int main()
 	std::cout << cerfa666;
 	std::cout << cafNpc1;
 	cafNpc1.signForm(cerfa666);
-	std::cout << "everything normal\n";
+	std::cout << cerfa666;
 	} catch (std::exception& e) {
 		e.what();
 	}
+
+	try {
+
+		Form cerfa666("cerfawtf", 1, 1);
+		Bureacrat franceTravailNpc(1, "Francois");
+
+		std::cout << cerfa666;
+		std::cout << franceTravailNpc;
+		franceTravailNpc.signForm(cerfa666);
+		std::cout << cerfa666;
+		} catch (std::exception& e) {
+			e.what();
+		}
 	return (0);
 }
