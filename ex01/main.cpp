@@ -6,7 +6,7 @@ int main()
 	try {
 
 	Form cerfa666("cerfa666", 1, 1);
-	Bureacrat cafNpc1(2, "Patricia");
+	Bureaucrat cafNpc1(2, "Patricia");
 
 	std::cout << cerfa666;
 	std::cout << cafNpc1;
@@ -19,7 +19,7 @@ int main()
 	try {
 
 		Form cerfa666("cerfawtf", 1, 1);
-		Bureacrat franceTravailNpc(1, "Francois");
+		Bureaucrat franceTravailNpc(1, "Francois");
 
 		std::cout << cerfa666;
 		std::cout << franceTravailNpc;

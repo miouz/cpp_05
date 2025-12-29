@@ -4,7 +4,7 @@
 #include <string>
 #include <exception>
 
-class Bureacrat;
+class Bureaucrat;
 class Form
 {
 	const std::string	formName_;
@@ -24,7 +24,7 @@ class Form
 	int	getGradeToExec() const;
 	bool			getIsSigned() const;
 
-	void	beSigned(const Bureacrat& one);
+	void	beSigned(const Bureaucrat& one);
 	
 	class	gradeTooHighException: public std::exception
 	{

@@ -46,7 +46,7 @@ bool Form::getIsSigned() const
 	return isSigned_;
 }
 
-void	Form::beSigned(const Bureacrat& one)
+void	Form::beSigned(const Bureaucrat& one)
 {
 	if (one.getGrade() <= gradeToSign_)
 		isSigned_ = true;

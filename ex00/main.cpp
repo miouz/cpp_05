@@ -4,7 +4,7 @@ int main()
 {
 	//test for constructor exception
 	try{
-	Bureacrat	cafNpc1(-1,"Francois");
+	Bureaucrat	cafNpc1(-1,"Francois");
 
 	std::cout << cafNpc1;
 	}
@@ -14,7 +14,7 @@ int main()
 
 	//test for upgrade and degrade exeption
 	try {
-	Bureacrat cafNpc2(150, "Patricia");
+	Bureaucrat cafNpc2(150, "Patricia");
 
 	std::cout << cafNpc2;
 	cafNpc2.degrade();
@@ -24,7 +24,7 @@ int main()
 		std::cout << "Error: " << e.what();
 	}
 	try {
-	Bureacrat cafNpc3(1, "Jean-Charles");
+	Bureaucrat cafNpc3(1, "Jean-Charles");
 
 	std::cout << cafNpc3;
 	cafNpc3.upgrade();

@@ -5,17 +5,17 @@
 #include <string>
 #include <iostream>
 
-class Bureacrat
+class Bureaucrat
 {
 	const std::string	name_;
 	int					grade_	;
 
 	public:
-	Bureacrat();
-	Bureacrat(int grade, const std::string& name);
-	~Bureacrat();
-	Bureacrat(const Bureacrat& other);
-	Bureacrat& operator=(const Bureacrat& other);
+	Bureaucrat();
+	Bureaucrat(int grade, const std::string& name);
+	~Bureaucrat();
+	Bureaucrat(const Bureaucrat& other);
+	Bureaucrat& operator=(const Bureaucrat& other);
 
 	const std::string getName() const;
 	int	getGrade() const;
@@ -46,6 +46,6 @@ class Bureacrat
 
 };
 
-std::ostream& operator<<(std::ostream& out, const Bureacrat& one);
+std::ostream& operator<<(std::ostream& out, const Bureaucrat& one);
 
 #endif // !BUREAUCRAT_HPP_
