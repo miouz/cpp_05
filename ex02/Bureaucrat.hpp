@@ -6,17 +6,17 @@
 #include <iostream>
 #include "AForm.hpp"
 
-class Bureacrat
+class Bureaucrat
 {
 	const std::string	name_;
 	int					grade_	;
 
 	public:
-	Bureacrat();
-	Bureacrat(int grade, const std::string& name);
-	~Bureacrat();
-	Bureacrat(const Bureacrat& other);
-	Bureacrat& operator=(const Bureacrat& other);
+	Bureaucrat();
+	Bureaucrat(int grade, const std::string& name);
+	~Bureaucrat();
+	Bureaucrat(const Bureaucrat& other);
+	Bureaucrat& operator=(const Bureaucrat& other);
 
 	const std::string getName() const;
 	int	getGrade() const;
@@ -26,7 +26,7 @@ class Bureacrat
 
 	class	GradeTooHighException: public std::exception
 	{
-		const ::std::string	msg_name_;
+		const std::string	msg_name_;
 		std::string	msg_;
 
 		public:
@@ -37,7 +37,7 @@ class Bureacrat
 
 	class	GradeTooLowException: public std::exception
 	{
-		const ::std::string	msg_name_;
+		const std::string	msg_name_;
 		std::string msg_;
 
 		public:
@@ -48,6 +48,6 @@ class Bureacrat
 
 };
 
-std::ostream& operator<<(std::ostream& out, const Bureacrat& one);
+std::ostream& operator<<(std::ostream& out, const Bureaucrat& one);
 
 #endif // !BUREAUCRAT_HPP_

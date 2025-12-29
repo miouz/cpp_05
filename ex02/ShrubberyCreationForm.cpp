@@ -1,6 +1,43 @@
 #include "ShrubberyCreationForm.hpp"
+#include "Bureaucrat.hpp"
+#include "AForm.hpp"
 #include <fstream>
 #include <iostream>
+#include <cstdio>
+#include <stdexcept>
+
+ShrubberyCreationForm::ShrubberyCreationForm(): AForm("ShrubberyCreationForm", 145, 137),
+shrubberyName_("_shrubbery") {}
+
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target): AForm("ShrubberyCreationForm", 145, 137),
+shrubberyName_(target + "_shrubbery") {}
+
+ShrubberyCreationForm::~ShrubberyCreationForm()
+{
+	std::cout << "ShrubberyCreationForm destructor called\n";
+}
+
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other): AForm("ShrubberyCreationForm", 145, 137),
+shrubberyName_(other.shrubberyName_) {}
+
+ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& other)
+{
+	if (this == &other)
+		return *this;
+
+	shrubberyName_ = other.shrubberyName_;
+	return *this;
+}
+
+const std::string& ShrubberyCreationForm::getName() const
+{
+	return shrubberyName_;
+}
+
+void	ShrubberyCreationForm::setName(const std::string& name)
+{
+	shrubberyName_ = name;
+}
 
 void drawTree(std::ofstream& file)
 {
@@ -18,48 +55,24 @@ void drawTree(std::ofstream& file)
 	file << "                  |  / |      |     '            /\n";
 	file << "                  | (_/       |      `-._     _.'\n";
 	file << "                  \\ //\\      .|           `--'\n";
-	file << "                   \\\"  \\   '\\ \\___/)_          \n";
-	file << "                    |   |  ` \\_      \\`  ,        \n";
-	file << "                    \\   \\       (\\ .o-`-o    \n";
-	file << "                    |    \\__  _______,-'\\`      \n";
-	file << "                    \\      ( |  |              \n";
-	file << "                     |      \\\\  |               \n";
+	file << "                   \\\"  \\   '\\ \\___/)_\n";
+	file << "                    |   |  ` \\_      \\`  ,\n";
+	file << "                    \\   \\       (\\ .o-`-o\n";
+	file << "                    |    \\__  _______,-'\\`\n";
+	file << "                    \\      ( |  |\n";
+	file << "                     |      \\\\  |\n";
 	file << "              b    \"\" \\\n";
 }
-ShrubberyCreationForm::ShrubberyCreationForm(): AForm("ShrubberyCreationForm", 145, 137),
-shrubberyName_("_shrubbery")
+
+void	ShrubberyCreationForm::action(Bureaucrat const& executor) const
 {
-	std::ofstream	file(shrubberyName_);
+	std::ofstream	file;
+
+	file.open(shrubberyName_.c_str(),std::fstream::out | std::fstream::trunc);
 
 	if (!file.is_open())
-		throw std::runtime_error("Fail to creat _shrubbery form");
+		throw std::runtime_error("Fail to creat " + shrubberyName_);
+	(void)executor;
 	drawTree(file);
 	file.close();
-}
-
-ShrubberyCreationForm::ShrubberyCreationForm(std::string& target): AForm("ShrubberyCreationForm", 145, 127),
-shrubberyName_(target + "_shrubbery")
-{
-
-	std::ofstream	file(shrubberyName_);
-
-	if (!file.is_open())
-		throw std::runtime_error("Fail to creat " + target + "_shrubbery");
-	drawTree(file);
-	file.close();
-}
-
-ShrubberyCreationForm::~ShrubberyCreationForm()
-{
-	std::cout << "ShrubberyCreationForm destructor called\n";
-}
-
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other)
-{
-
-}
-
-ShrubberyCreationForm::ShrubberyCreationForm& operator=(const ShrubberyCreationForm& other)
-{
-
 }

@@ -4,7 +4,7 @@
 #include <string>
 #include <exception>
 
-class Bureacrat;
+class Bureaucrat;
 class AForm
 {
 	private:
@@ -20,23 +20,35 @@ class AForm
 	AForm(const AForm& other);
 	AForm& operator=(const AForm& other);
 
-	const std::string getName() const;
+	virtual const std::string& getName() const;
 	int	getGradeToSign() const;
 	int	getGradeToExec() const;
-	bool			getIsSigned() const;
+	bool	getIsSigned() const;
 
-	void	beSigned(const Bureacrat& one);
+	void	beSigned(const Bureaucrat& one);
+	void	execute(Bureaucrat const& executor) const;
+	virtual	void action(Bureaucrat const& executor) const = 0;
 	
-	class	gradeTooHighException: public std::exception
+	class	GradeTooHighException: public std::exception
 	{
 		public:
 		const char*	what() const throw();
 	};
 
-	class gradeTooLowException: public std::exception
+	class GradeTooLowException: public std::exception
 	{
 		public:
 		const char*	what() const throw();
+	};
+
+	class FormNotSigned: public std::exception
+	{
+		std::string	msg_;
+
+		public:
+		FormNotSigned(const std::string& formName);
+		virtual ~FormNotSigned() throw();
+		const char* what() const throw();
 	};
 };
 
