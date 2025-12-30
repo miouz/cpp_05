@@ -63,11 +63,11 @@ void	ShrubberyCreationForm::action(Bureaucrat const& executor) const
 {
 	std::ofstream	file;
 
+	std::cout << executor.getName() << " is executing "<< this->shrubberyName_ << ", the only work for today🥸🤔\n";
 	file.open(shrubberyName_.c_str(),std::fstream::out | std::fstream::trunc);
 
 	if (!file.is_open())
 		throw std::runtime_error("Fail to creat " + shrubberyName_);
 	drawTree(file);
 	file.close();
-	std::cout << executor.getName() << " just executed "<< this->shrubberyName_ << ", the only work for today🥸🤔\n";
 }
