@@ -1,9 +1,7 @@
 #include "ShrubberyCreationForm.hpp"
 #include "Bureaucrat.hpp"
-#include "AForm.hpp"
 #include <fstream>
 #include <iostream>
-#include <cstdio>
 #include <stdexcept>
 
 ShrubberyCreationForm::ShrubberyCreationForm(): AForm("ShrubberyCreationForm", 145, 137),
@@ -12,10 +10,7 @@ shrubberyName_("_shrubbery") {}
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target): AForm("ShrubberyCreationForm", 145, 137),
 shrubberyName_(target + "_shrubbery") {}
 
-ShrubberyCreationForm::~ShrubberyCreationForm()
-{
-	std::cout << "ShrubberyCreationForm destructor called\n";
-}
+ShrubberyCreationForm::~ShrubberyCreationForm() {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other): AForm("ShrubberyCreationForm", 145, 137),
 shrubberyName_(other.shrubberyName_) {}
@@ -72,7 +67,7 @@ void	ShrubberyCreationForm::action(Bureaucrat const& executor) const
 
 	if (!file.is_open())
 		throw std::runtime_error("Fail to creat " + shrubberyName_);
-	(void)executor;
 	drawTree(file);
 	file.close();
+	std::cout << executor.getName() << " just executed "<< this->shrubberyName_ << ", the only work for today🥸🤔\n";
 }
