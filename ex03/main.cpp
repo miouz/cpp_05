@@ -7,13 +7,20 @@
 
 int main()
 {
+	//test form subject
+	Intern someRandomIntern;
+	AForm* rrf;
+	rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+	std::cout << *rrf;
+
+	//my test
 	try{
 	Intern	aNewFreshIntern;
-	AForm* cerfa0 = aNewFreshIntern.makeForm("ShrubberyCreationForm", "Francois");
+	AForm* cerfa0 = aNewFreshIntern.makeForm("shrubbery", "Francois");
 	std::cout << *cerfa0;
-	AForm* cerfa1 = aNewFreshIntern.makeForm("RobotomyRequestForm", "Michel");
+	AForm* cerfa1 = aNewFreshIntern.makeForm("robotomy request", "Michel");
 	std::cout << *cerfa1;
-	AForm* cerfa2 = aNewFreshIntern.makeForm("PresidentialPardonForm", "Jerome");
+	AForm* cerfa2 = aNewFreshIntern.makeForm("presidential pardon", "Jerome");
 	std::cout << *cerfa2;
 	AForm* cerfa3 = aNewFreshIntern.makeForm("Shrub", "Jerome");
 	std::cout << *cerfa3;

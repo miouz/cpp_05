@@ -3,6 +3,7 @@
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
 #include <sstream>
+#include <iostream>
 
 
 Intern::Intern(){}
@@ -37,13 +38,16 @@ static AForm*	creatPresidentialPardonForm(const std::string& target)
 
 AForm*	Intern::makeForm(const std::string& formName, const std::string& target)
 {
-	std::string	allForm[3] = {"ShrubberyCreationForm", "RobotomyRequestForm", "PresidentialPardonForm"};
+	std::string	allForm[3] = {"shrubbery", "robotomy request", "presidential pardon"};
 	AForm*	(*formCreator[3])(const std::string&) = {&creatShrubberyCreationForm, &creatRobotomyRequestForm, &creatPresidentialPardonForm };
 
 	for(int i = 0; i < 3; i++)
 	{
 		if (allForm[i] == formName)
+		{
+			std::cout<< "Intern creates "<< formName <<"\n";
 			return formCreator[i](target);
+		}
 	}
 	throw FormNotFoundException(formName);
 }

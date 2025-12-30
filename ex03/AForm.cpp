@@ -83,7 +83,7 @@ const char* AForm::FormNotSigned::what() const throw()
 
 std::ostream& operator<<(std::ostream& out, const AForm& one)
 {
-	out <<std::boolalpha << "File " << one.getName() <<", grade to sign " << one.getGradeToSign()
+	out <<std::boolalpha << "File " << one.AForm::getName() <<", grade to sign " << one.getGradeToSign()
 		<< ", grade to exec " << one.getGradeToExec() <<". Form is signed = " << one.getIsSigned() << std::endl;
 	return out;
 }
