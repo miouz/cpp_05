@@ -11,13 +11,13 @@ class ShrubberyCreationForm: public AForm
 	public:
 	ShrubberyCreationForm();
 	ShrubberyCreationForm(const std::string& target);
-	~ShrubberyCreationForm();
+	virtual ~ShrubberyCreationForm();
 	ShrubberyCreationForm(const ShrubberyCreationForm& other);
 	ShrubberyCreationForm& operator=(const ShrubberyCreationForm& other);
 
-	const std::string& getName() const;
+	virtual const std::string& getName() const;
 	void	setName(const std::string& name);
-	void	action(Bureaucrat const & executor) const;
+	virtual void	action(Bureaucrat const & executor) const;
 };
 
 #endif // !SHRUBBERYCREATIONFORM_HPP_

@@ -31,7 +31,7 @@ class Bureaucrat
 
 		public:
 		GradeTooHighException(const std::string& name);
-		~GradeTooHighException() throw();
+		virtual ~GradeTooHighException() throw();
 		const char* what() const throw ();
 	};
 
@@ -42,7 +42,7 @@ class Bureaucrat
 
 		public:
 		GradeTooLowException(const std::string& name);
-		~GradeTooLowException() throw();
+		virtual ~GradeTooLowException() throw();
 		const char* what() const throw();
 	};
 
