@@ -2,6 +2,7 @@
 #include "AForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 int main()
 {
@@ -22,6 +23,16 @@ int main()
 	cerfa02->execute(cafNpc);
 	cerfa02->execute(cafNpc);
 	cerfa02->execute(cafNpc);
+
+	//test for PresidentialPardonForm
+	AForm *cerfa03 = new PresidentialPardonForm("cafNPCPatricia");
+	cafNpc.signForm(*cerfa03);
+	cerfa03->execute(cafNpc);
+
+
+	//test for execute
+	cafNpc2.executeForm(*cerfa03);
+	cafNpc.executeForm(*cerfa03);
 
 	
 	return (0);
