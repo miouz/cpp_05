@@ -63,7 +63,7 @@ void	ShrubberyCreationForm::action(Bureaucrat const& executor) const
 {
 	std::ofstream	file;
 
-	std::cout << executor.getName() << " is executing "<< this->shrubberyName_ << ", the only work for today🥸🤔\n";
+	std::cout << this->shrubberyName_ << ", the only work for "<< executor.getName()<<" today🥸🤔\n";
 	file.open(shrubberyName_.c_str(),std::fstream::out | std::fstream::trunc);
 
 	if (!file.is_open())

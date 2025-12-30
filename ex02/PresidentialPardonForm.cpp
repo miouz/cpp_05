@@ -33,6 +33,6 @@ const std::string& PresidentialPardonForm::getName() const
 
 void PresidentialPardonForm::action(const Bureaucrat& executor) const
 {
-	std::cout << executor.getName() << " is executing PresidentialPardonForm for "<< presidentialName_<<"\n";
+	(void)executor;
 	std::cout<< presidentialName_ << " has been pardoned by Zaphod Beeblebrox🙏🏻\n";
 }
