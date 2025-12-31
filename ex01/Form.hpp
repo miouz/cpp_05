@@ -7,6 +7,7 @@
 class Bureaucrat;
 class Form
 {
+	private:
 	const std::string	formName_;
 	bool		isSigned_;
 	const int	gradeToSign_;
