@@ -1,4 +1,4 @@
-NAME := bureacratSaison0
+NAME := bureacratSeason0
 
 # ============================================================================ #
 #                               COMPILOR & FLAGS                                  #

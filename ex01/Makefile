@@ -1,4 +1,4 @@
-NAME := bureaucratSaison1
+NAME := bureaucratSeason1
 
 # ============================================================================ #
 #                               COMPILOR & FLAGS                                  #
